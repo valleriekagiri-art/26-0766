@@ -1,3 +1,10 @@
-<h2> My name is Vallerie<\h2>
-<h2>26-0766<\h2>
-<h1>This is my first HTML project<\h1>
+<!DOCTYPE html>
+<html>
+<head>
+<title>My First Webpage</title>
+</head>
+<body>
+<h1>Welcome to Web Technologies</h1>
+<p>This is my first webpage.</p>
+</body>
+</html>

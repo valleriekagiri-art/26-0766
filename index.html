@@ -202,5 +202,64 @@ footer {
 /products.html
 /contact.html
 /style.css
+<div class="section" id="available">
+    <h2>Available Products ✨</h2>
 
+
+
+        <div class="product-card">
+            <img src="charm.jpg" alt="Charm Bracelet">
+            <h3>Charm Bracelet</h3>
+        </div>
+
+        <div class="product-card">
+            <img src="hoop.jpg" alt="Hoop Earrings">
+            <h3>Hoop Earrings</h3>
+        </div>
+
+        <div class="product-card">
+            <img src="anklet.jpg" alt="Anklet">
+            <h3>Anklet</h3>
+        </div>
+
+        <div class="product-card">
+            <img src="couple.jpg" alt="Couple Rings">
+            <h3>Couple Rings</h3>
+        </div>
+
+        <div class="product-card">
+            <img src="cryrtal.jpg" alt="Crystal Pendant">
+            <h3>Crystal Pendant</h3>
+        </div>
+
+    </div>
+</div>
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.product-card {
+    background: white;
+    width: 180px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ydlufn2nmOk?si=pOn32ro0dlkZaLZF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

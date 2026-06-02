@@ -198,3 +198,32 @@ footer {
 /contact.html
 /style.css  
 /images/
+header h1 {
+    font-size: 42px;
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #f4c2c2;
+    }
+    to {
+        text-shadow: 0 0 15px #fff, 0 0 25px #b76e79;
+    }
+<header>
+    <img src="logo.png" alt="Logo" class="logo">
+    <h1>Elegant Jewelry</h1>
+    <p>Shine with confidence ✨</p>
+</header>
+<script>
+let cart = [];
+
+function addToCart(productName) {
+    cart.push(productName);
+    alert(productName + " added to cart 🛒");
+    console.log("Cart items:", cart);
+}
+</script>

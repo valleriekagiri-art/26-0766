@@ -2,212 +2,457 @@
 <html>
 <head>
     <title>Val's Online Jewelry</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fff0f3 0%, #fce4ec 30%, #f8f0ff 60%, #fff8e1 100%);
+            background-attachment: fixed;
+            color: #3a1a1a;
+        }
+
+        /* ── Header ── */
+        header {
+            background: linear-gradient(90deg, #8b1a4a, #b76e79, #c9956a);
+            text-align: center;
+            padding: 30px 20px 20px;
+        }
+        header h1 {
+            font-size: 42px;
+            color: #fff8e1;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+        }
+        header p {
+            color: #ffe0b2;
+            font-size: 14px;
+            margin-top: 6px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* ── Nav ── */
+        nav {
+            background-color: #3e1a2e;
+            text-align: center;
+            padding: 13px 0;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        nav a {
+            color: #f9d5dc;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: bold;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+        nav a:hover { color: #ffd700; }
+
+        /* ── Sections ── */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        h2 {
+            text-align: center;
+            color: #8b1a4a;
+            font-size: 26px;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #b76e79, #c9956a);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ── Welcome ── */
+        .welcome-box {
+            background: white;
+            border-left: 5px solid #b76e79;
+            border-radius: 8px;
+            padding: 22px 28px;
+            box-shadow: 0 3px 12px rgba(183,110,121,0.12);
+            font-size: 15.5px;
+            line-height: 1.8;
+            color: #4a2030;
+        }
+
+        /* ── Lists side by side ── */
+        .lists-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .list-box {
+            background: white;
+            border-radius: 10px;
+            padding: 24px 32px;
+            box-shadow: 0 3px 14px rgba(183,110,121,0.13);
+            min-width: 260px;
+            flex: 1;
+        }
+        .list-box h3 {
+            color: #8b1a4a;
+            margin-bottom: 14px;
+            font-size: 17px;
+            border-bottom: 2px solid #f9d5dc;
+            padding-bottom: 8px;
+        }
+        .list-box li {
+            margin: 8px 0 8px 20px;
+            font-size: 14.5px;
+            color: #4a2030;
+        }
+        ol.list-box li { color: #5a1a30; font-weight: 500; }
+
+        /* ── Full-page Table ── */
+        .table-wrap {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(183,110,121,0.18);
+            width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background: linear-gradient(90deg, #8b1a4a, #b76e79);
+            color: white;
+            padding: 14px 18px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 13px 18px;
+            text-align: center;
+            border-bottom: 1px solid #f5e0e5;
+            font-size: 14.5px;
+            color: #4a2030;
+        }
+        tr:nth-child(even) td { background-color: #fff0f3; }
+        tr:hover td { background-color: #ffe4ec; }
+        td:last-child { font-weight: bold; color: #8b1a4a; }
+
+        /* ── Image Grid ── */
+        .img-grid {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 12px;
+        }
+        .img-grid td {
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(183,110,121,0.14);
+            vertical-align: top;
+            border-bottom: none;
+            width: 25%;
+        }
+        .img-grid td:hover {
+            background: #fff0f3;
+            transform: scale(1.03);
+            transition: all 0.25s ease;
+        }
+        .img-grid img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 7px;
+            border: 2px solid #f9d5dc;
+        }
+        .img-grid .caption {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #8b1a4a;
+            font-weight: bold;
+        }
+
+        /* ── Video Grid ── */
+        .video-grid {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 16px;
+        }
+        .video-grid td {
+            background: white;
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(183,110,121,0.16);
+            vertical-align: top;
+            border-bottom: none;
+            width: 50%;
+        }
+        .video-grid iframe {
+            width: 100%;
+            height: 240px;
+            border-radius: 8px;
+            border: none;
+        }
+        .video-grid .vcap {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #8b1a4a;
+            font-weight: bold;
+        }
+
+        /* ── Divider ── */
+        .divider {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b76e79, #c9956a, transparent);
+            margin: 10px 0;
+        }
+
+        /* ── Contact ── */
+        .contact-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 10px;
+            padding: 18px 28px;
+            box-shadow: 0 3px 14px rgba(183,110,121,0.13);
+            text-align: center;
+            min-width: 200px;
+            flex: 1;
+        }
+        .contact-card .icon { font-size: 28px; margin-bottom: 6px; }
+        .contact-card p { font-size: 14px; color: #4a2030; margin-top: 4px; }
+        .contact-card strong { color: #8b1a4a; }
+
+        /* ── Footer ── */
+        footer {
+            background: linear-gradient(90deg, #3e1a2e, #8b1a4a);
+            color: #f9d5dc;
+            text-align: center;
+            padding: 20px;
+            font-size: 13.5px;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Val's Online Jewelry</h1>
-    <hr>
+    <!-- ── Header ── -->
+    <header>
+        <h1>💍 Val's Online Jewelry</h1>
+        <p>Elegance. Quality. Style. — Imported from China, Iraq &amp; England</p>
+    </header>
 
-    <!-- Navigation -->
+    <!-- ── Navigation ── -->
     <nav>
         <a href="index.html">Home</a> |
         <a href="about.html">About</a> |
         <a href="products.html">Products</a> |
         <a href="contact.html">Contact</a>
     </nav>
-    <hr>
 
-    <!-- Welcome paragraph -->
-    <p>
-        Welcome to Val's online Jewelry shop. We sell high quality necklaces,
-        bracelets, anklets and rings (all types). We have imported goods from
-        China, Iraq and England. For delivery services reach us through our
-        mobile contact 0788945632 or on Instagram @vwk_jewelry.
-    </p>
+    <hr class="divider">
 
-    <!-- Jewelry Products -->
-    <h2>Jewelry Products</h2>
-    <ul>
-        <li>Gold Necklace</li>
-        <li>Silver Bracelet</li>
-        <li>Diamond Ring</li>
-        <li>Pearl Earrings</li>
-        <li>Anklet</li>
-    </ul>
+    <!-- ── Welcome ── -->
+    <section id="home">
+        <h2>Welcome</h2>
+        <div class="welcome-box">
+            Welcome to <strong>Val's Online Jewelry</strong> shop. We sell high quality necklaces,
+            bracelets, anklets and rings (all types). We have imported goods from
+            China, Iraq and England. For delivery services reach us through our
+            mobile contact <strong>0788 945 632</strong> or on Instagram
+            <strong>@vwk_jewelry</strong>. ✨
+        </div>
+    </section>
 
-    <!-- Top Selling Products -->
-    <h2>Top Selling Products</h2>
-    <ol>
-        <li>Diamond Ring</li>
-        <li>Gold Necklace</li>
-        <li>Pearl Earrings</li>
-        <li>Silver Bracelet</li>
-        <li>Anklet</li>
-    </ol>
+    <hr class="divider">
 
-    <!-- Product Gallery -->
-    <h2>Product Gallery</h2>
-    <img src="goldnecklace.jpg" alt="Gold Necklace" width="200">
-    <img src="pearlearings.jpg" alt="Pearl Earrings" width="200">
-    <img src="silverbracelet.jpg" alt="Silver Bracelet" width="200">
-    <img src="charm.jpg" alt="Charm Bracelet" width="200">
-    <img src="hoop.jpg" alt="Hoop Earrings" width="200">
-    <img src="anklet.jpg" alt="Anklet" width="200">
-    <img src="couple.jpg" alt="Couple Rings" width="200">
-    <img src="crystal.jpg" alt="Crystal Pendant" width="200">
+    <!-- ── Product Lists ── -->
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="lists-row">
+            <ul class="list-box">
+                <h3>🛍️ Jewelry Products</h3>
+                <li>Gold Necklace</li>
+                <li>Silver Bracelet</li>
+                <li>Diamond Ring</li>
+                <li>Pearl Earrings</li>
+                <li>Anklet</li>
+            </ul>
+            <ol class="list-box">
+                <h3>🏆 Top Selling Products</h3>
+                <li>Diamond Ring</li>
+                <li>Gold Necklace</li>
+                <li>Pearl Earrings</li>
+                <li>Silver Bracelet</li>
+                <li>Anklet</li>
+            </ol>
+        </div>
+    </section>
 
-    <!-- Jewelry Price List -->
-    <h2>Jewelry Price List</h2>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tr>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Price (KSh)</th>
-        </tr>
-        <tr>
-            <td>Elegant Ring</td>
-            <td>Gold-plated adjustable ring</td>
-            <td>500</td>
-        </tr>
-        <tr>
-            <td>Gold Necklace</td>
-            <td>Elegant chain necklace</td>
-            <td>800</td>
-        </tr>
-        <tr>
-            <td>Silver Bracelet</td>
-            <td>Stylish everyday bracelet</td>
-            <td>300</td>
-        </tr>
-        <tr>
-            <td>Stud Earrings</td>
-            <td>Classic sparkling studs</td>
-            <td>400</td>
-        </tr>
-        <tr>
-            <td>Pearl Necklace</td>
-            <td>Elegant pearl design</td>
-            <td>1200</td>
-        </tr>
-        <tr>
-            <td>Charm Bracelet</td>
-            <td>Bracelet with decorative charms</td>
-            <td>700</td>
-        </tr>
-        <tr>
-            <td>Hoop Earrings</td>
-            <td>Large fashionable hoops</td>
-            <td>600</td>
-        </tr>
-        <tr>
-            <td>Anklet</td>
-            <td>Delicate ankle jewelry</td>
-            <td>350</td>
-        </tr>
-        <tr>
-            <td>Couple Rings</td>
-            <td>Matching ring set</td>
-            <td>1500</td>
-        </tr>
-    </table>
-body {
-    background: linear-gradient(
-        45deg,
-        #ffffff 0%,
-        #f2f2f2 25%,
-        #e8e8e8 50%,
-        #f8f8f8 75%,
-        #ffffff 100%
-    );
-    font-family: Arial, sans-serif;
-}
-    <!-- YouTube Video -->
-    <h2>Watch Our Jewelry Showcase</h2>
-    <p>See our latest collection in action.</p>
-    <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/hbJoajsYsAw"
-        title="Val's Jewelry Showcase"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe
-        
-    <!-- Contact -->
-    <h2>Contact Us</h2>
-    <p>Email: elegantjewelry@email.com</p>
-    <p>Phone: +254 798760989</p>
-    <<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f6f7;
-    margin: 0;
-    padding: 0;
-}
+    <hr class="divider">
 
-h1, h2 {
-    text-align: center;
-    color: #b76e79;
-}
+    <!-- ── Price Table (full width) ── -->
+    <section>
+        <h2>💰 Jewelry Price List</h2>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Description</th>
+                    <th>Price (KSh)</th>
+                </tr>
+                <tr><td>Elegant Ring</td><td>Gold-plated adjustable ring</td><td>500</td></tr>
+                <tr><td>Gold Necklace</td><td>Elegant chain necklace</td><td>800</td></tr>
+                <tr><td>Silver Bracelet</td><td>Stylish everyday bracelet</td><td>300</td></tr>
+                <tr><td>Stud Earrings</td><td>Classic sparkling studs</td><td>400</td></tr>
+                <tr><td>Pearl Necklace</td><td>Elegant pearl design</td><td>1,200</td></tr>
+                <tr><td>Charm Bracelet</td><td>Bracelet with decorative charms</td><td>700</td></tr>
+                <tr><td>Hoop Earrings</td><td>Large fashionable hoops</td><td>600</td></tr>
+                <tr><td>Anklet</td><td>Delicate ankle jewelry</td><td>350</td></tr>
+                <tr><td>Couple Rings</td><td>Matching ring set</td><td>1,500</td></tr>
+            </table>
+        </div>
+    </section>
 
-table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+    <hr class="divider">
 
-th {
-    background-color: #b76e79;
-    color: white;
-    padding: 12px;
-}
+    <!-- ── Image Gallery — 4 cols × 2 rows ── -->
+    <section id="gallery">
+        <h2>🖼️ Product Gallery</h2>
+        <table class="img-grid">
+            <!-- Row 1 -->
+            <tr>
+                <td>
+                    <img src="goldnecklace.jpg" alt="Gold Necklace">
+                    <div class="caption">Gold Necklace</div>
+                </td>
+                <td>
+                    <img src="pearlearings.jpg" alt="Pearl Earrings">
+                    <div class="caption">Pearl Earrings</div>
+                </td>
+                <td>
+                    <img src="silverbracelet.jpg" alt="Silver Bracelet">
+                    <div class="caption">Silver Bracelet</div>
+                </td>
+                <td>
+                    <img src="charm.jpg" alt="Charm Bracelet">
+                    <div class="caption">Charm Bracelet</div>
+                </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr>
+                <td>
+                    <img src="hoop.jpg" alt="Hoop Earrings">
+                    <div class="caption">Hoop Earrings</div>
+                </td>
+                <td>
+                    <img src="anklet.jpg" alt="Anklet">
+                    <div class="caption">Anklet</div>
+                </td>
+                <td>
+                    <img src="couple.jpg" alt="Couple Rings">
+                    <div class="caption">Couple Rings</div>
+                </td>
+                <td>
+                    <img src="crystal.jpg" alt="Crystal Pendant">
+                    <div class="caption">Crystal Pendant</div>
+                </td>
+            </tr>
+        </table>
+    </section>
 
-td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #ddd;
-}
+    <hr class="divider">
 
-tr:nth-child(even) {
-    background-color: #f8f8f8;
-}
+    <!-- ── Video Grid — 2 cols × 2 rows ── -->
+    <section>
+        <h2>🎬 Jewelry Showcase Videos</h2>
+        <table class="video-grid">
+            <!-- Row 1 -->
+            <tr>
+                <td>
+                    <iframe src="https://www.youtube.com/embed/hbJoajsYsAw"
+                        title="Val's Jewelry Showcase"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    <div class="vcap">✨ Val's Jewelry Showcase</div>
+                </td>
+                <td>
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        title="Jewelry Collection 2024"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    <div class="vcap">💍 Latest Collection 2024</div>
+                </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr>
+                <td>
+                    <iframe src="https://www.youtube.com/embed/3tmd-ClpJxA"
+                        title="Gold Jewelry Tips"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    <div class="vcap">🥇 Gold Jewelry Care Tips</div>
+                </td>
+                <td>
+                    <iframe src="https://www.youtube.com/embed/JGwWNGJdvx8"
+                        title="How to Style Jewelry"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    <div class="vcap">👑 How to Style Your Jewelry</div>
+                </td>
+            </tr>
+        </table>
+    </section>
 
-tr:hover {
-    background-color: #ffe6ea;
-}
+    <hr class="divider">
 
-nav {
-    background-color: #333;
-    text-align: center;
-    padding: 12px;
-}
+    <!-- ── Contact ── -->
+    <section id="contact">
+        <h2>📬 Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="icon">📧</div>
+                <strong>Email</strong>
+                <p>elegantjewelry@email.com</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon">📞</div>
+                <strong>Phone</strong>
+                <p>+254 798 760 989</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon">📸</div>
+                <strong>Instagram</strong>
+                <p>@vwk_jewelry</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon">📱</div>
+                <strong>WhatsApp</strong>
+                <p>0788 945 632</p>
+            </div>
+        </div>
+    </section>
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 15px;
-    font-weight: bold;
-}
+    <hr class="divider">
 
-nav a:hover {
-    color: #b76e79;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: 20px;
-}
-</style>p>Instagram: @vwk_jewelry</p>
-
-    <hr>
+    <!-- ── Footer ── -->
     <footer>
-        <p>&copy; 2024 Val's Online Jewelry. All rights reserved.</p>
+        <p>💍 &copy; 2024 Val's Online Jewelry. All rights reserved. | Made with ❤️ for style lovers</p>
     </footer>
 
 </body>
